@@ -1,0 +1,162 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card card-register">
+                <form [formGroup]="usuarioForm">
+                    <div class="row">
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Nome</label>
+                            <input formControlName="nomeUsuario" class="form-control" type="text" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['nomeUsuario'].hasError('required') && usuarioForm.controls['nomeUsuario'].touched">O
+                                campo Nome é obrigatório</label>
+                        </div>
+
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Sobrenome</label>
+                            <input formControlName="sobrenomeUsuario" class="form-control" type="text" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['sobrenomeUsuario'].hasError('required') && usuarioForm.controls['sobrenomeUsuario'].touched">O
+                                campo Sobrenome é obrigatório</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Data Nascimento</label>
+                            <input formControlName="dtNascimentoUsuario" class="form-control" type="date" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['dtNascimentoUsuario'].hasError('required') && usuarioForm.controls['dtNascimentoUsuario'].touched">O
+                                campo Data de Nascimento é obrigatório</label>
+                        </div>
+
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">CPF</label>
+                            <input (blur)="validaCPF()" formControlName="cpfUsuario" class="form-control" type="text"
+                                mask="000.000.000-00" [showMaskTyped]="true" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['cpfUsuario'].hasError('minlength') && usuarioForm.controls['cpfUsuario'].touched">Insira
+                                um CPF válido</label>
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['cpfUsuario'].hasError('required') && usuarioForm.controls['cpfUsuario'].touched">O
+                                campo CPF é obrigatório</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Telefone</label>
+                            <input mask="(00) 00000-0000" formControlName="telefoneUsuario" class="form-control"
+                                type="text" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['telefoneUsuario'].hasError('minlength') && usuarioForm.controls['telefoneUsuario'].touched">Insira
+                                um Telefone válido.</label>
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['telefoneUsuario'].hasError('required') && usuarioForm.controls['telefoneUsuario'].touched">O
+                                campo Telefone é obrigatório</label>
+                        </div>
+
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">E-Mail</label>
+                            <input formControlName="emailUsuario" class="form-control" type="text" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['emailUsuario'].hasError('email') && usuarioForm.controls['emailUsuario'].touched">Insira
+                                um E-Mail válido.</label>
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['emailUsuario'].hasError('required') && usuarioForm.controls['emailUsuario'].touched">O
+                                campo E-Mail é obrigatório</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Senha</label>
+                            <input formControlName="senhaUsuario" class="form-control" type="password" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['senhaUsuario'].hasError('required') && usuarioForm.controls['senhaUsuario'].touched">O
+                                campo Senha é obrigatório</label>
+                        </div>
+
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Confirmar Senha</label>
+                            <input formControlName="confirmarSenhaUsuario" class="form-control" type="password" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['senhaUsuario'].value != usuarioForm.controls['confirmarSenhaUsuario'].value && usuarioForm.controls['confirmarSenhaUsuario'].touched">As
+                                senhas não conferem</label>
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['confirmarSenhaUsuario'].hasError('required') && usuarioForm.controls['confirmarSenhaUsuario'].touched">O
+                                campo Confirmação de Senha é obrigatório</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 class="mb-4 mt-5">Endereço</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">CEP</label>
+                            <input (blur)="getDadosCep()" formControlName="cepUsuario" class="form-control" type="text"
+                                mask="00000000" />
+
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['logradouroUsuario'].hasError('required') && usuarioForm.controls['cepUsuario'].touched">Insira
+                                um CEP válido.</label>
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['cepUsuario'].hasError('required') && usuarioForm.controls['cepUsuario'].touched">O
+                                campo CEP é obrigatório</label>
+                        </div>
+
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Logradouro</label>
+                            <input formControlName="logradouroUsuario" class="form-control" type="text" readonly />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Número</label>
+                            <input formControlName="numeroUsuario" class="form-control" type="text" />
+                            <label class="lbl-erro ms-1"
+                                *ngIf="usuarioForm.controls['numeroUsuario'].hasError('required') && usuarioForm.controls['numeroUsuario'].touched">O
+                                campo Número é obrigatório</label>
+                        </div>
+
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Complemento</label>
+                            <input formControlName="complementoUsuario" class="form-control" type="text" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Bairro</label>
+                            <input formControlName="bairroUsuario" class="form-control" type="text" readonly />
+                        </div>
+
+                        <div class="campo-form col-md col-sm-12">
+                            <label class="ms-3 mb-2">Cidade</label>
+                            <input formControlName="cidadeUsuario" class="form-control" type="text" readonly />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button [disabled]="!usuarioForm.valid" (click)="cadastrarUsuario()"
+                                class="btn btn-cadastrar m-3">Cadastrar-se</button>
+                        </div>
+                        <div class="col-12 text-center" *ngIf="!checkSenhasCoincidem">
+                            <label class="lbl-erro">As senhas não coincidem.</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.card-register {
+    margin: 3vh 2vw;
+    background-color: #405D6D;
+    padding: 0px 5vw;
+}
+
+.campo-form {
+    margin: 1vh 5vw;
+}
+
+.btn-cadastrar {
+    background-color: #33C5F3;
+    border-radius: 10px;
+    padding: 8px 25px;
+    color: #FFFFFF;
+
+    transition: 0.2s;
+}
+
+.btn-cadastrar:hover {
+    padding: 8px 30px;
+
+    transition: 0.2s;
+}
+
+.lbl-erro {
+    color: #ec2d2d;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 767px) {
+    .campo-form {
+        margin: 1vh 0vw;
+    }
+}

@@ -1,0 +1,38 @@
+.navbar {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+
+    background-color: #405D6D;
+    border-bottom: 5px solid #33C5F3;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 99;
+}
+
+.navbar img {
+    position: absolute;
+    top: 10px;
+}
+
+.navbar li {
+    display: inline;
+    padding: 10px 100px;
+
+    font-size: 20px;
+}
+
+.navbar ul {
+    position: relative;
+    top: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .navbar li {
+        padding: 5px 8%;
+    }
+
+    .navbar img {
+        display: none;
+    }
+}

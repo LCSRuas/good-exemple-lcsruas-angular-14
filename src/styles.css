@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importando fontes externas */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+/* Definindo os padroes de layout */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #384B56;
+}
+
+.container-fluid {
+    margin: 7vh 0 0 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+a,
+span,
+li,
+button {
+    font-family: 'Nunito', sans-serif;
+    color: #FFFFFF;
+}
+
+@media only screen and (max-width: 767px) {
+    .container-fluid {
+        margin: 10vh 0 0 0 !important;
+    }
+}
+
+/* Estilizando o scroll da pagina */
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #33C5F3;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #405D6D;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #38505e;
+}
